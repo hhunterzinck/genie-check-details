@@ -27,8 +27,15 @@ tic = as.double(Sys.time())
 library(glue)
 library(dplyr)
 library(yaml)
+library(rjson)
 library(synapser)
-syn = synLogin(silent = T)
+
+secret <- Sys.getenv("SCHEDULED_JOB_SECRETS")
+if (secret != "") {
+  syn = synLogin(silent = T, authToken = fromJSON(secret)$SYNAPSE_AUTH_TOKEN)
+} else {
+  syn = synLogin(silent = T)
+}
 
 config <- read_yaml("config.yaml")
 
