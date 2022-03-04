@@ -10,4 +10,4 @@ WORKDIR /usr/local/src/myscripts
 
 RUN R -e 'renv::restore()'
 
-ENTRYPOINT ["Rscript", "mv_vital_error_details.R"]
+ENTRYPOINT ["Rscript", "mg_vital_error_details.R"]
