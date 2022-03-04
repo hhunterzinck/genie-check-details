@@ -1,4 +1,4 @@
-# {TITLE}
+# Main GENIE detailed error reporting
 
 ## Installation
 
