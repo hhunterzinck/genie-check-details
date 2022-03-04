@@ -18,4 +18,4 @@ WORKDIR /usr/local/src/myscripts
 
 RUN R -e 'renv::restore()'
 
-ENTRYPOINT ["Rscript", "mg_vital_error_details.R"]
+ENTRYPOINT ["Rscript", "genie-main-details.R"]
