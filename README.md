@@ -57,7 +57,7 @@ Rscript mg_vital_error_details.R -v -u
 
 To display the command line interface:
 ```
-docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm mg_vital_error_details.R -h
+docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm genie-main-details -h
 ```
 
 The command line interface will display as follows:
@@ -78,5 +78,5 @@ Options:
 
 Example run: 
 ```
-docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm mg_vital_error_details.R -v -u
+docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm genie-main-details -v -u
 ```
