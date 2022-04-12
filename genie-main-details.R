@@ -126,12 +126,20 @@ check_vital_redaction <- function(pat) {
   return(res)
 }
 
-check_vital_text <- function(pat, strs_text = c("Unknown", "Not Collected", "Not Applicable", "Not Released")) {
+check_vital_text <- function(pat, 
+                             strs_text = c("Unknown", "Not Collected", "Not Applicable", "Not Released"),
+                             exception = T) {
   res <- pat %>%
     filter((is.element(YEAR_DEATH, strs_text) | is.element(INT_DOD, strs_text)) & YEAR_DEATH != INT_DOD) %>%
     mutate(YEAR = YEAR_DEATH) %>%
     mutate(INT = INT_DOD) %>%
     select(PATIENT_ID, YEAR, INT, DEAD)
+  
+  if (exception) {
+    res <- res %>%
+      filter(!(!is.element(YEAR, strs_text) & INT == "Unknown")) %>%
+      select(PATIENT_ID, YEAR, INT, DEAD)
+  }
   
   return(res)
 }
@@ -192,12 +200,20 @@ check_contact_redaction <- function(pat) {
   return(res)
 }
 
-check_contact_text <- function(pat, strs_text = c("Unknown", "Not Collected", "Not Applicable", "Not Released")) {
+check_contact_text <- function(pat, 
+                               strs_text = c("Unknown", "Not Collected", "Not Applicable", "Not Released"),
+                               exception = T) {
   res <- pat %>%
     filter((is.element(YEAR_CONTACT, strs_text) | is.element(INT_CONTACT, strs_text)) & YEAR_CONTACT != INT_CONTACT) %>%
     mutate(YEAR = YEAR_CONTACT) %>%
     mutate(INT = INT_CONTACT) %>%
     select(PATIENT_ID, YEAR, INT, DEAD)
+  
+  if (exception) {
+    res <- res %>%
+      filter(!(!is.element(YEAR, strs_text) & INT == "Unknown")) %>%
+      select(PATIENT_ID, YEAR, INT, DEAD)
+  }
   
   return(res)
 }
