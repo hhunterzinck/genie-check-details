@@ -1,5 +1,9 @@
 # Main GENIE detailed error reporting
 
+## Note
+
+Active version now transferred to Sage-Bionetworks organization: https://github.com/Sage-Bionetworks/genie-main-details
+
 ## Installation
 
 Clone this repository and navigate to the directory:
